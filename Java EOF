@@ -1,0 +1,26 @@
+
+import java.util.Scanner;
+
+public class JavaEOF {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int i=0;
+        String pattern = "end-of-file";
+        try {
+            do {
+                String str = scan.nextLine();
+                i++;
+                if(!str.contains(pattern)) {
+                    System.out.println(i + " " + str);
+                }
+                else {
+                    System.out.println(i + " " + str);
+                    scan.close();
+                }
+            }
+            while (!scan.hasNext(pattern));
+        }
+        catch (Exception e) {}
+    }
+}
