@@ -1,0 +1,36 @@
+package week34.Wednesday;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class HashMapRepeatingStr {
+    public static void main(String[] args) {
+        repatingWords();
+    }
+
+    public static void repatingWords() {
+        HashMap<String, Integer> myStr = new HashMap<>();
+
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Please enter the sentence : "); //The best way to understand Java is the practice Java using Java
+        String sentence = scan.nextLine();
+        String myArr[] = sentence.toLowerCase().split(" ");
+
+        for (String s:myArr
+             ) {
+            if(myStr.containsKey(s)) {
+                myStr.put(s,myStr.get(s)+1);
+            }
+            else {
+                myStr.put(s,1);
+            }
+        }
+
+        for (String s:myStr.keySet()
+             ) {
+            if(myStr.get(s)>1) {
+                System.out.printf("%-5s : %d\n",s,myStr.get(s));
+            }
+        }
+    }
+}
