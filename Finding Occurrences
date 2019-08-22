@@ -1,0 +1,51 @@
+package week34.Wednesday;
+
+import java.util.HashMap;
+
+public class HashMapOccurences {
+    public static void main(String[] args) {
+        int [] myArr = {1,2,3,4,3,2,2,};
+        findOccurences(myArr);
+        findOccurs(myArr);
+    }
+
+    public static void findOccurences(int [] arr) {
+        HashMap<Integer, Integer> counts = new HashMap<>();
+
+        for (Integer n :arr) {
+            if (counts.containsKey(n)) {
+                counts.put(n, counts.get(n) + 1);
+            } else {
+                counts.put(n,1);
+            }
+        }
+        int counter=0;
+        for (Integer number : counts.keySet()) {
+            System.out.println(number + " = " + counts.get(number));
+            if(counts.get(number)>1) counter=counter+counts.get(number);
+        }
+        System.out.println("There are totally "+counter+" repeating numbers");
+    }
+
+    public static void findOccurs(int[] arr) {
+        HashMap<Integer, Integer> occurs = new HashMap<>();
+        int counter=0;
+        for (int i = 0; i < arr.length ; i++) {
+            for (int j = 0; j < arr.length ; j++) {
+                if(arr[i]==arr[j]) {
+                    counter++;
+                }
+            }
+            occurs.put(arr[i], counter);
+            counter=0;
+        }
+        System.out.println(occurs);
+
+        int n=0;
+        for (int m:occurs.keySet()
+             ) {
+            if(occurs.get(m)>1) n=n+occurs.get(m);
+        }
+        System.out.println("There are totally "+n+" repeating numbers");
+    }
+}
